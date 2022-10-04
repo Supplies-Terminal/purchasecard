@@ -3,8 +3,12 @@
 
         <template id="print">
           <title>Purchase Card</title>
-          <t t-esc="uuid"/>
-          <t t-esc="data"/>
+          <t t-esc="title"/>
+          <t t-esc="locale"/>
+        </template>
+        <template id="print-error">
+          <title>Purchase Card</title>
+          <t t-esc="message"/>
         </template>
     </data>
 </odoo>
