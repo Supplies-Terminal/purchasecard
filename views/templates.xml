@@ -4,6 +4,7 @@
         <template id="print">
           <title>Purchase Card</title>
           <t t-esc="uuid"/>
+          <t t-esc="data"/>
         </template>
     </data>
 </odoo>
