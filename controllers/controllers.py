@@ -62,7 +62,7 @@ class Purchasecard(http.Controller):
         return http.request.render('purchasecard.print', {
             'uuid': uuid,
             'locale': locale,
-            'title': website.name,
+            'title': website['name'],
             'data': purchaseCardGrid
         })
         
