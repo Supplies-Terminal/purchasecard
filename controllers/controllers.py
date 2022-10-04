@@ -8,7 +8,7 @@ class Purchasecard(http.Controller):
         return "Hello, world"
 
     @http.route('/purchasecard/purchasecard/print/<uuid>/<locale>', auth='public')
-    def list(self, uuid, locale**kw):
+    def list(self, uuid, locale, **kw):
         purchasecard = http.request.env['st.purchasecard'].search([('uuid', '=', uuid)], limit=1)
         if not purchasecard:
             return http.request.render('purchasecard.print-error', {
@@ -17,7 +17,7 @@ class Purchasecard(http.Controller):
 
         locale = get_nearest_lang(local)
         if not locale:
-            locale = "en_US"
+            locale = 'en_US'
             
         website = http.request.env['website'].browse(purchasecard['website_id'])
 
