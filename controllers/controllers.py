@@ -23,10 +23,6 @@ class Purchasecard(http.Controller):
         _logger.info(purchasecard.website_id.id)
         _logger.info(purchasecard.website_id.name)
         _logger.info('********purchasecard 2*********')
-        if not website:
-            return http.request.render('purchasecard.print-error', {
-                'message': 'Data error: Website not exists.',
-            })
                     
         def get_frontend_langs():
             return [code for code, _ in http.request.env['res.lang'].get_installed()]
@@ -73,7 +69,7 @@ class Purchasecard(http.Controller):
         return http.request.render('purchasecard.print', {
             'uuid': uuid,
             'locale': locale,
-            'website': website['name'],
+            'website': purchasecard.website_id.name,
             'data': purchasecard['data']
         })
         
