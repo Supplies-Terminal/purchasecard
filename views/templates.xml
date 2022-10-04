@@ -1,0 +1,9 @@
+<odoo>
+    <data>
+
+        <template id="print">
+          <title>Purchase Card</title>
+          <t t-esc="uuid"/>
+        </template>
+    </data>
+</odoo>
