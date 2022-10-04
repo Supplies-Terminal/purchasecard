@@ -19,7 +19,7 @@ class Purchasecard(http.Controller):
             })
         _logger.debug('********purchasecard*********')
         _logger.info(purchasecard['id'])
-        _logger.info(purchasecard['website_id'])
+        _logger.info(purchasecard['website']['id'])
         _logger.info(purchasecard['data'])
         
         def get_frontend_langs():
@@ -44,8 +44,7 @@ class Purchasecard(http.Controller):
         if not locale:
             locale = 'en_US'
             
-        # website = http.request.env['website'].browse(purchasecard['website_id'])
-        website = http.request.env['website'].search([('id', '=', purchasecard['website_id'])], limit=1)
+        website = http.request.env['website'].browse(purchasecard['website']['id'])
         if not purchasecard:
             return http.request.render('purchasecard.print-error', {
                 'message': 'Data error: Website not exists.',
