@@ -12,7 +12,7 @@ class Purchasecard(http.Controller):
         purchasecard = http.request.env['st.purchasecard'].search([('uuid', '=', uuid)], limit=1)
         if not purchasecard:
             return http.request.render('purchasecard.print-error', {
-                'message': uuid,
+                'message': 'Data not found',
             })
 
         def get_frontend_langs():
@@ -38,6 +38,11 @@ class Purchasecard(http.Controller):
             locale = 'en_US'
             
         # website = http.request.env['website'].browse(purchasecard['website_id'])
+        website = http.request.env['website'].search([('id', '=', purchasecard['website_id'])], limit=1)
+        if not purchasecard:
+            return http.request.render('purchasecard.print-error', {
+                'message': 'Data error: Website not exists.',
+            })
 
         lines = 20
         # 获取指定语言的商品名称
@@ -62,7 +67,7 @@ class Purchasecard(http.Controller):
         return http.request.render('purchasecard.print', {
             'uuid': uuid,
             'locale': locale,
-            # 'title': website['name'],
-            'data': purchaseCardGrid
+            'website': website['name'],
+            'data': purchasecard['data']
         })
         
