@@ -16,7 +16,7 @@ class Purchasecard(http.Controller):
             })
 
         def get_frontend_langs():
-            return [code for code, _ in request.env['res.lang'].get_installed()]
+            return [code for code, _ in http.request.env['res.lang'].get_installed()]
 
         def get_nearest_lang(lang_code):
             """ Try to find a similar lang. Eg: fr_BE and fr_FR
