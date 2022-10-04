@@ -20,8 +20,13 @@ class Purchasecard(http.Controller):
         _logger.debug('********purchasecard*********')
         _logger.info(purchasecard)
         _logger.info(purchasecard['data'])
-        _logger.info(purchasecard['website_id'])
-        
+        website = purchasecard['website']
+        _logger.info(website['id'])
+        if not website:
+            return http.request.render('purchasecard.print-error', {
+                'message': 'Data error: Website not exists.',
+            })
+                    
         def get_frontend_langs():
             return [code for code, _ in http.request.env['res.lang'].get_installed()]
 
@@ -44,12 +49,6 @@ class Purchasecard(http.Controller):
         if not locale:
             locale = 'en_US'
             
-        website = http.request.env['website'].browse(purchasecard['website_id'])
-        if not purchasecard:
-            return http.request.render('purchasecard.print-error', {
-                'message': 'Data error: Website not exists.',
-            })
-
         lines = 20
         # 获取指定语言的商品名称
         purchaseCardGrid = json.loads(purchasecard['data'])
