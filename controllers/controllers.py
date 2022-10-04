@@ -6,10 +6,6 @@ import logging
 _logger = logging.getLogger(__name__)
 
 class Purchasecard(http.Controller):
-    @http.route('/purchasecard/purchasecard', auth='public')
-    def index(self, **kw):
-        return "Hello, world"
-
     @http.route('/purchasecard/purchasecard/print/<uuid>/<locale>', auth='public')
     def list(self, uuid, locale, **kw):
         purchasecard = http.request.env['st.purchasecard'].search([('uuid', '=', uuid)], limit=1)
@@ -17,13 +13,7 @@ class Purchasecard(http.Controller):
             return http.request.render('purchasecard.print-error', {
                 'message': 'Data not found',
             })
-        _logger.info('********purchasecard*********')
-        _logger.info(purchasecard)
-        _logger.info(purchasecard['data'])
-        _logger.info(purchasecard.website_id.id)
-        _logger.info(purchasecard.website_id.name)
-        _logger.info('********purchasecard 2*********')
-                    
+            
         def get_frontend_langs():
             return [code for code, _ in http.request.env['res.lang'].get_installed()]
 
@@ -65,11 +55,12 @@ class Purchasecard(http.Controller):
                         name: '&nbsp;',
                         unit: '&nbsp;'
                     }
-        
+        _logger.info(json.dump(purchaseCardGrid))
+                
         return http.request.render('purchasecard.print', {
             'uuid': uuid,
             'locale': locale,
             'website': purchasecard.website_id.name,
-            'data': purchasecard['data']
+            'data': purchaseCardGrid
         })
         
