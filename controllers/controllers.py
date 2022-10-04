@@ -13,11 +13,14 @@ class Purchasecard(http.Controller):
             return http.request.render('purchasecard.print-error', {
                 'message': 'Data not found',
             })
-        _logger.info(purchasecard.website_id.id)
-        _logger.info(purchasecard.website_id.name)
+
+        website = purchasecard.website_id
+        
+        _logger.info(purchasecard.website.id)
+        _logger.info(purchasecard.website.name)
         _logger.info('********purchasecard 2*********')
         
-        if not purchasecard.website_id:
+        if not website:
             return http.request.render('purchasecard.print-error', {
                 'message': 'Data error: website not exists',
             })
@@ -74,7 +77,7 @@ class Purchasecard(http.Controller):
         return http.request.render('purchasecard.print', {
             'uuid': uuid,
             'locale': locale,
-            'website': purchasecard.website_id.name,
+            'website': website.name,
             'data': purchaseCardGrid
         })
         
