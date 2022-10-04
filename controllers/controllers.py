@@ -55,7 +55,6 @@ class Purchasecard(http.Controller):
                         name: '&nbsp;',
                         unit: '&nbsp;'
                     }
-        _logger.info(json.dump(purchaseCardGrid))
                 
         return http.request.render('purchasecard.print', {
             'uuid': uuid,
