@@ -14,17 +14,19 @@ class Purchasecard(http.Controller):
                 'message': 'Data not found',
             })
 
+        _logger.info(purchasecard.id)
+
         website = purchasecard.website_id
-        
-        _logger.info(purchasecard.website.id)
-        _logger.info(purchasecard.website.name)
-        _logger.info('********purchasecard 2*********')
         
         if not website:
             return http.request.render('purchasecard.print-error', {
                 'message': 'Data error: website not exists',
             })
             
+        _logger.info(website.id)
+        _logger.info(website.name)
+        _logger.info('********purchasecard 2*********')
+        
         def get_frontend_langs():
             return [code for code, _ in http.request.env['res.lang'].get_installed()]
 
