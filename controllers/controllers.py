@@ -13,6 +13,14 @@ class Purchasecard(http.Controller):
             return http.request.render('purchasecard.print-error', {
                 'message': 'Data not found',
             })
+        _logger.info(purchasecard.website_id.id)
+        _logger.info(purchasecard.website_id.name)
+        _logger.info('********purchasecard 2*********')
+        
+        if not purchasecard.website_id:
+            return http.request.render('purchasecard.print-error', {
+                'message': 'Data error: website not exists',
+            })
             
         def get_frontend_langs():
             return [code for code, _ in http.request.env['res.lang'].get_installed()]
@@ -39,7 +47,6 @@ class Purchasecard(http.Controller):
         lines = 20
         # 获取指定语言的商品名称
         purchaseCardGrid = json.loads(purchasecard['data'])
-        print(purchaseCardGrid)
         data = {}
         for tableIndex in range(0, len(purchaseCardGrid)-1):
             total = len(purchaseCardGrid[tableIndex]['items'])
