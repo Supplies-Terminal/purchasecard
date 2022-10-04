@@ -8,7 +8,7 @@ class Purchasecard(http.Controller):
         return "Hello, world"
 
     @http.route('/purchasecard/purchasecard/print/<uuid>', auth='public')
-    def list(self, **kw):
+    def list(self, uuid, **kw):
         return http.request.render('purchasecard.print', {
             'uuid': uuid,
         })
