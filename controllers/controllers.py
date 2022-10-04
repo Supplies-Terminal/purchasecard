@@ -37,7 +37,7 @@ class Purchasecard(http.Controller):
         if not locale:
             locale = 'en_US'
             
-        website = http.request.env['website'].browse(purchasecard['website_id'])
+        # website = http.request.env['website'].browse(purchasecard['website_id'])
 
         lines = 20
         # 获取指定语言的商品名称
@@ -62,7 +62,7 @@ class Purchasecard(http.Controller):
         return http.request.render('purchasecard.print', {
             'uuid': uuid,
             'locale': locale,
-            'title': website['name'],
+            # 'title': website['name'],
             'data': purchaseCardGrid
         })
         
