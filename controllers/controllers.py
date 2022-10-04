@@ -47,10 +47,10 @@ class Purchasecard(http.Controller):
             'data': purchaseCardGrid
         })
         
-    get_frontend_langs():
+    def get_frontend_langs():
         return [code for code, _ in request.env['res.lang'].get_installed()]
 
-    get_nearest_lang(lang_code):
+    def get_nearest_lang(lang_code):
         """ Try to find a similar lang. Eg: fr_BE and fr_FR
             :param lang_code: the lang `code` (en_US)
         """
