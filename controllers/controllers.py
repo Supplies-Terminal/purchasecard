@@ -18,7 +18,7 @@ class Purchasecard(http.Controller):
                 'message': 'Data not found',
             })
         _logger.debug('********purchasecard*********')
-        _logger.info(purchasecard['id'])
+        _logger.info(purchasecard)
         _logger.info(purchasecard['data'])
         _logger.info(purchasecard['website_id'])
         
