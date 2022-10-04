@@ -17,11 +17,12 @@ class Purchasecard(http.Controller):
             return http.request.render('purchasecard.print-error', {
                 'message': 'Data not found',
             })
-        _logger.debug('********purchasecard*********')
+        _logger.info('********purchasecard*********')
         _logger.info(purchasecard)
         _logger.info(purchasecard['data'])
-        website = purchasecard['website']
-        _logger.info(website['id'])
+        _logger.info(purchasecard.website_id.id)
+        _logger.info(purchasecard.website_id.name)
+        _logger.info('********purchasecard 2*********')
         if not website:
             return http.request.render('purchasecard.print-error', {
                 'message': 'Data error: Website not exists.',
