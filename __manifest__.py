@@ -7,7 +7,7 @@
 
     'description': """ 
     """,
-
+    'license': 'LGPL-3',
     'author': "alvin.z",
     'website': "https://suppliesterminal.com",
 

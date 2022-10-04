@@ -1,6 +1,9 @@
 # -*- coding: utf-8 -*-
 from odoo import http
 import json
+import logging
+
+_logger = logging.getLogger(__name__)
 
 class Purchasecard(http.Controller):
     @http.route('/purchasecard/purchasecard', auth='public')
@@ -14,7 +17,11 @@ class Purchasecard(http.Controller):
             return http.request.render('purchasecard.print-error', {
                 'message': 'Data not found',
             })
-
+        _logger.debug('********purchasecard*********')
+        _logger.info(purchasecard['id'])
+        _logger.info(purchasecard['website_id'])
+        _logger.info(purchasecard['data'])
+        
         def get_frontend_langs():
             return [code for code, _ in http.request.env['res.lang'].get_installed()]
 
