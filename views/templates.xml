@@ -3,18 +3,38 @@
     <template id="print">
       <title>Purchase Card</title>
       <t t-esc="title"/>
-      <div class="titles clearfix" style="display: flex; clear:both;">
-        <div style="flex: 1; text-align: left; font-size: 25px; font-weight: 700; margin-top: 0px; margin-bottom: 0px;"> <t t-esc="website"/></div>
-        <div style="flex: 1; text-align: right; font-size: 14px; font-weight: 700; margin-top: 0px; margin-bottom: 0px;">
-          <img src="https://app.suppliesterminal.com/Public/Home/img/app.png" style="float: right; max-height: 40px; max-width:40px; margin-left: 10px;"/>
-          Scan to get our app<br/><span style="font-size: 10px; font-weight: normal;">Powdered by SUPPLIES TERMINAL</span>
+      <t t-foreach="data" t-as="page">
+        <div v-if="page_index>0" style="page-break-after:always;"></div>
+        <div class="titles clearfix" style="display: flex; clear:both;">
+          <div style="flex: 1; text-align: left; font-size: 25px; font-weight: 700; margin-top: 0px; margin-bottom: 0px;"><t t-esc="website"/></div>
+          <div style="flex: 1; text-align: right; font-size: 14px; font-weight: 700; margin-top: 0px; margin-bottom: 0px;">
+            <img src="https://app.suppliesterminal.com/Public/Home/img/app.png" style="float: right; max-height: 40px; max-width:40px; margin-left: 10px;"/>
+            Scan to get our app<br/><span style="font-size: 10px; font-weight: normal;">Powdered by SUPPLIES TERMINAL</span>
+          </div>
         </div>
-      </div>
-      <t t-foreach="data" t-as="table">
-        <p>123</p>
+        <div style="width: 100%;">
+          <div t-foreach="page" t-as="table" style="width: 50%; float: left;">
+            <div style="margin: 0px 3px 0px 3px;">
+              <table class="table table-bordered" style="margin-bottom: 10px;">
+                <tbody>
+                  <tr class="th js_th">
+                    <th class="text-left" style="width: 80%; overflow: hidden; white-space: nowrap; padding: 1px 5px; font-size: 10px; font-weight: 700;">GROUP<t t-esc="table_index + table_index"/></th>
+                    <th class="text-center" style="width: 12%; overflow: hidden; white-space: nowrap; padding: 1px 5px; font-size: 10px; font-weight: 700;">QTY</th>
+                    <th class="text-center" style="width: 8%; overflow: hidden; white-space: nowrap; padding: 1px 5px; font-size: 10px; font-weight: 700;">UNIT</th>
+                  </tr>
+                  <tr t-foreach="table" t-as="row">
+                    <td class="text-left" style="overflow: hidden; white-space: nowrap; padding: 1px 5px; font-size: 13px"><t t-esc="row.name"/></td>
+                    <td style="padding: 1px 5px; font-size: 13px"></td>
+                    <td class="text-center" style="overflow: hidden; white-space: nowrap; padding: 1px 5px; font-size: 13px"><t t-esc="row.unit"/></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </t>
     </template>
-    
+
     <template id="print-error">
       <title>Purchase Card</title>
       <t t-esc="message"/>

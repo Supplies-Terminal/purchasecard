@@ -47,8 +47,13 @@ class Purchasecard(http.Controller):
         lines = 20
         # 获取指定语言的商品名称
         purchaseCardGrid = json.loads(purchasecard['data'])
-        data = {}
+        pages = {}
+        
         for tableIndex in range(0, len(purchaseCardGrid)-1):
+            pageIndex = tableIndex % 4
+            if not pages[pageIndex]:
+                pages[pageIndex] = []
+            
             total = len(purchaseCardGrid[tableIndex]['items'])
             for itemIndex in range(0, total-1):
                 productInfo = http.request.env['product.product'].with_context(lange=locale).browse(purchaseCardGrid[tableIndex]['items'][itemIndex]['product_id'])
@@ -62,7 +67,10 @@ class Purchasecard(http.Controller):
                         name: '&nbsp;',
                         unit: '&nbsp;'
                     }
-                
+            pages[pageIndex].append(purchaseCardGrid[tableIndex])
+
+        _logger.info(len(pages))
+               
         return http.request.render('purchasecard.print', {
             'uuid': uuid,
             'locale': locale,
