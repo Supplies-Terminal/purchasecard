@@ -23,9 +23,9 @@
                     <th class="text-center" style="width: 8%; overflow: hidden; white-space: nowrap; padding: 1px 5px; font-size: 10px; font-weight: 700;">UNIT</th>
                   </tr>
                   <tr t-foreach="table" t-as="row">
-                    <td class="text-left" style="overflow: hidden; white-space: nowrap; padding: 1px 5px; font-size: 13px"><t t-esc="row.name"/></td>
+                    <td class="text-left" style="overflow: hidden; white-space: nowrap; padding: 1px 5px; font-size: 13px"><t t-esc="row_index"/></td>
                     <td style="padding: 1px 5px; font-size: 13px"></td>
-                    <td class="text-center" style="overflow: hidden; white-space: nowrap; padding: 1px 5px; font-size: 13px"><t t-esc="row.unit"/></td>
+                    <td class="text-center" style="overflow: hidden; white-space: nowrap; padding: 1px 5px; font-size: 13px"><t t-esc="row_index"/></td>
                   </tr>
                 </tbody>
               </table>
