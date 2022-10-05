@@ -73,8 +73,9 @@ class Purchasecard(http.Controller):
             if total < lines:
                 for other in range(total, lines):
                     purchaseCardGrid[tableIndex]['items'].append({
-                        name: '&nbsp;',
-                        unit: '&nbsp;'
+                        'product_id': 0,
+                        'name': '&nbsp;',
+                        'unit': '&nbsp;'
                     })
             pages[pageIndex].append(purchaseCardGrid[tableIndex])
 
