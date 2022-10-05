@@ -18,9 +18,7 @@ class Purchasecard(http.Controller):
         _logger.info('********purchasecard*********')
         _logger.info(purchasecard)
         _logger.info(purchasecard['data'])
-        _logger.info(purchasecard.website_id.id)
-        _logger.info(purchasecard.website_id.name)
-        _logger.info('********purchasecard 2*********')
+        _logger.info(purchasecard.website_id)
         website = purchasecard.website_id
         
         if not website:
@@ -28,6 +26,7 @@ class Purchasecard(http.Controller):
                 'message': 'Data error: website not exists',
             })
             
+        _logger.info('********purchasecard 2*********')
         _logger.info(website.id)
         _logger.info(website.name)
         _logger.info('********purchasecard 2*********')
