@@ -61,7 +61,7 @@ class Purchasecard(http.Controller):
         
         for tableIndex in range(0, len(purchaseCardGrid)-1):
             pageIndex = tableIndex % 4
-            if not pages[pageIndex]:
+            if not pages.has_key(pageIndex):
                 pages[pageIndex] = []
             
             total = len(purchaseCardGrid[tableIndex]['items'])
