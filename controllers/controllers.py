@@ -78,7 +78,7 @@ class Purchasecard(http.Controller):
                     })
             pages[pageIndex].append(purchaseCardGrid[tableIndex])
 
-        _logger.info(len(pages))
+        _logger.info(json.dumps(pages))
                
         return http.request.render('purchasecard.print', {
             'uuid': uuid,
