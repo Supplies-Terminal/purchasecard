@@ -72,11 +72,10 @@ class Purchasecard(http.Controller):
             # 补全空行
             if total < lines:
                 for other in range(total, lines):
-                    purchaseCardGrid[tableIndex]['items'][other] = {
-                        product_id: 0,
+                    purchaseCardGrid[tableIndex]['items'].append({
                         name: '&nbsp;',
                         unit: '&nbsp;'
-                    }
+                    })
             pages[pageIndex].append(purchaseCardGrid[tableIndex])
 
         _logger.info(len(pages))
