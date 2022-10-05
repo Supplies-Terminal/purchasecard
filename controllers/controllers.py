@@ -17,7 +17,7 @@ class Purchasecard(http.Controller):
         _logger.info(purchasecard.id)
         _logger.info('********purchasecard*********')
         _logger.info(purchasecard)
-        _logger.info(purchasecard['data'])
+        _logger.info(purchasecard.uuid)
         _logger.info(purchasecard.website_id)
         website = purchasecard.website_id
         
